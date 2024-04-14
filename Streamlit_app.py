@@ -8,24 +8,13 @@ import PIL.Image
 GOOGLE_API_KEY=st.secrets["GOOGLE_API_KEY"]
 genai.configure(api_key=GOOGLE_API_KEY)
 
-generation_config = {
-    "max_output_tokens": 2048,
-    "temperature": 0.9,
-    "top_p": 1,
-}
-
 
 def app():
 
     model = genai.GenerativeModel(
-        "gemini-1.0-pro",
-        #"gemini-1.5-pro-preview-0409",
+        "gemini-pro-vision",
     )
 
-    chat = model.start_chat()
-
-    # Initialize chat history
-    chat_history = []
 
     # Create two columns
     col1, col2 = st.columns([1, 4])
@@ -63,76 +52,52 @@ def app():
 
     options = ['Sample 1', 'Sample 2', 'Sample 3', 'Sample 4', 'Sample 5', 'Sample 6', 'Sample 7']
   
-    yearlevel = st.sidebar.selectbox(
+    selected_option = st.sidebar.selectbox(
     label="Select an essay sample to use:",
     options=options,
     index=0  # Optionally set a default selected index
     )
 
-
-
-    topic = st.text_input("Please input the topic: ")
-
-    options = ['Generate engaging learning activities', 
-    'Suggest alternative explanations for a concept students find challenging', 
-    'Provide differentiation strategies to cater to learners with varying needs',
-    'Create formative assessment ideas to gauge student understanding',
-    'Offer resources for incorporating technology into the classroom']
+    if selected_option == 'Sample 1':
+        filename = "01.jpg"
+    elif selected_option == 'Sample 2':
+        filename = "02.jpg"
+    elif selected_option == 'Sample 3':
+        filename = "03.jpg"
+    elif selected_option == 'Sample 4':
+        filename = "04.jpg"
+    elif selected_option == 'Sample 5':
+        filename = "05.jpg"
+    elif selected_option == 'Sample 6':
+        filename = "06.jpg"
+    elif selected_option == 'Sample 7':
+        filename = "07.jpg"
     
-    # Create the combobox (selectbox) with a descriptive label
-    selected_option = st.selectbox(
-    label="Choose a task for the teaching co-pilot:",
-    options=options,
-    index=0  # Optionally set a default selected index
-    )
+    img = PIL.Image.open('./essays/' + filename)
 
-    question = selected_option + " for year level " + yearlevel + " on topic " + topic
-
-    # Create a checkbox and store its value
-    checkbox_value = st.checkbox("Check this box to input a custom prompt.")
-
-    # Display whether the checkbox is checked or not
-    if checkbox_value:
-        # Ask the user to input text
-        question = st.text_input("Please input a prompt (indicate year level and topic): ")
+    prompt = """You are a language teacher.  Score the essay response 
+    found in this image.  Provide feedback and suggestions for improvement."""
 
     # Button to generate response
-    if st.button("Generate Response"):
+    if st.button("Score Essay"):
         progress_bar = st.progress(0, text="The AI teacher co-pilot is processing the request, please wait...")
-        if topic:
+       
 
-            # Add user message to chat history
-            chat_history.append({"speaker": "User", "message": question})
+        # Generate response from emini
+        bot_response = model.generate_content([prompt, img])
 
-            # Generate response from Gemma
-            bot_response = chat.send_message(question,
-                generation_config=generation_config,
-            )
+        # Access the content of the response text
+        bot_response = bot_response.text
+        st.write(f"Gemini: {bot_response}")
 
-            # Access the content of the response text
-            bot_response = bot_response.text
-
-            # Add bot response to chat history
-            chat_history.append({"speaker": "Gemini", "message": bot_response})
-
-            # Display chat history
-            for message in chat_history:
-                st.write(f"{message['speaker']}: {message['message']}")
-
-            # update the progress bar
-            for i in range(100):
-                # Update progress bar value
-                progress_bar.progress(i + 1)
-                # Simulate some time-consuming task (e.g., sleep)
-                time.sleep(0.01)
-            # Progress bar reaches 100% after the loop completes
-            st.success("AI teacher co-pilot task completed!") 
-
-
-        else:
-            st.error("Please enter a prompt.")
-
- 
+        # update the progress bar
+        for i in range(100):
+            # Update progress bar value
+            progress_bar.progress(i + 1)
+            # Simulate some time-consuming task (e.g., sleep)
+            time.sleep(0.01)
+        # Progress bar reaches 100% after the loop completes
+        st.success("AI teacher co-pilot task completed!") 
 
 #run the app
 if __name__ == "__main__":
