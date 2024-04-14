@@ -54,6 +54,7 @@ def app():
     uploaded_file = st.sidebar.file_uploader("Choose an image", type=["jpg", "jpeg", "png"])
     if uploaded_file is not None:
         st.image(uploaded_file, caption="Uploaded Image", use_column_width=True)
+        image = Image.open(uploaded_file)
         question = st.text_area("Enter the essay question:")
         scoring_rubric = st.text_area("Enter the scoring rubric:")
     
@@ -64,12 +65,12 @@ def app():
 
     # Button to generate response
     if st.button("Score Essay"):
-        st.image(uploaded_file, caption="Essay Response", use_column_width=True)
+        st.image(image, caption="Essay Response", use_column_width=True)
         progress_bar = st.progress(0, text="The AI teacher co-pilot is processing the request, please wait...")
        
 
         # Generate response from emini
-        bot_response = model.generate_content([prompt, uploaded_file])
+        bot_response = model.generate_content([prompt, image])
 
         # Access the content of the response text
         bot_response = bot_response.text
