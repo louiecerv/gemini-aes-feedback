@@ -35,7 +35,7 @@ def app():
 
     # Display the title in the right column
     with col2:
-        st.title("A Teaching Co-pilot Powered by Google Gemini on Vertex AI")
+        st.title("Automated Essay Scoring System using Gemini on Google AI Studio")
 
     text = """Prof. Louie F. Cervantes, M. Eng. (Information Engineering) \n
     CCS 229 - Intelligent Systems
@@ -43,8 +43,6 @@ def app():
     College of Information and Communications Technology
     West Visayas State University
     """
-
-
     with st.expander("Click to display developer information."):
         st.text(text)
         link_text = "Click here to visit [Gemini 1.5 Pro](https://developers.googleblog.com/2024/04/gemini-15-pro-in-public-preview-with-new-features.html)"
