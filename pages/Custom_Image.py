@@ -41,17 +41,16 @@ def app():
         st.write(link_text)
     
     st.subheader("Score Handwritten Essays Quickly and Easily")
-    text = """This app streamlines the process of scoring your students'    
-    handwritten essays. Here's how to get started:
-    1. Capture a Clear Photo: Ensure good lighting and hold your camera `
+    text = """This app streamlines the process of scoring your students' handwritten essays. Here's how to get started:
+    \n1. Capture a Clear Photo: Ensure good lighting and hold your camera
     steady to take a sharp photo of the handwritten essay.
-    2. Upload the Image: Select the photo you just captured from your 
+    \n2. Upload the Image: Select the photo you just captured from your 
     device's gallery.
-    3. Provide Context: Enter the essay prompt or question that the 
+    \n3. Provide Context: Enter the essay prompt or question that the 
     students were responding to.
-    4. Upload or paste the scoring rubric you'll be using to evaluate 
+    \n4. Upload or paste the scoring rubric you'll be using to evaluate 
     the essays.
-    Get Instant Scores: Click "Score Essay" to receive an automated 
+    \nGet Instant Scores: Click "Score Essay" to receive an automated 
     assessment based on your chosen rubric."""
     st.write(text)
 
