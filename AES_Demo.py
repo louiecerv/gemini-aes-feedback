@@ -40,14 +40,13 @@ def app():
         link_text = "Click here to visit [Gemini Vertex AI](https://cloud.google.com/vertex-ai/docs/start/introduction-unified-platform)"
         st.write(link_text)
 
-    st.subheader("Empower Your Teaching with AI: The Gemini Teacher Copilot")
-    text = """Unleash creativity and personalize learning in your classroom with 
-    the Gemini Teacher Copilot, a revolutionary data app powered by Google's 
-    cutting-edge large language model, Gemini 1.5 on Vertex AI. This AI co-pilot 
-    equips educators with a treasure trove of ideas and resources to spark 
-    student engagement, tackle challenging concepts, differentiate instruction, 
-    design formative assessments, and seamlessly integrate technology into 
-    lessons, all while saving educators time and boosting their teaching potential."""
+    st.subheader("From Tedious Grading to Personalized Feedback: Unleashing the Power of Automated Essay Scoring")
+    text = """Traditionally, grading essays has been a time-consuming manual process for educators. 
+    Now, with the help of advanced technology like Gemini, we can transform essay scoring.
+    Gemini analyzes images of handwritten essays and generates both a score and individualized 
+    feedback for improvement.
+    This innovative approach saves educators valuable time while providing students with actionable 
+    insights to enhance their writing skills."""
     st.write(text)
 
     options = ['Sample 1', 'Sample 2', 'Sample 3', 'Sample 4', 'Sample 5', 'Sample 6', 'Sample 7']

@@ -39,15 +39,20 @@ def app():
         st.write(link_text)
         link_text = "Click here to visit [Gemini Vertex AI](https://cloud.google.com/vertex-ai/docs/start/introduction-unified-platform)"
         st.write(link_text)
-
-    st.subheader("Empower Your Teaching with AI: The Gemini Teacher Copilot")
-    text = """Unleash creativity and personalize learning in your classroom with 
-    the Gemini Teacher Copilot, a revolutionary data app powered by Google's 
-    cutting-edge large language model, Gemini 1.5 on Vertex AI. This AI co-pilot 
-    equips educators with a treasure trove of ideas and resources to spark 
-    student engagement, tackle challenging concepts, differentiate instruction, 
-    design formative assessments, and seamlessly integrate technology into 
-    lessons, all while saving educators time and boosting their teaching potential."""
+    
+    st.subheader("Score Handwritten Essays Quickly and Easily")
+    text = """This app streamlines the process of scoring your students'    
+    handwritten essays. Here's how to get started:
+    1. Capture a Clear Photo: Ensure good lighting and hold your camera `
+    steady to take a sharp photo of the handwritten essay.
+    2. Upload the Image: Select the photo you just captured from your 
+    device's gallery.
+    3. Provide Context: Enter the essay prompt or question that the 
+    students were responding to.
+    4. Upload or paste the scoring rubric you'll be using to evaluate 
+    the essays.
+    Get Instant Scores: Click "Score Essay" to receive an automated 
+    assessment based on your chosen rubric."""
     st.write(text)
 
     # Create a file uploader widget
@@ -65,7 +70,6 @@ def app():
 
     # Button to generate response
     if st.button("Score Essay"):
-        st.image(image, caption="Essay Response", use_column_width=True)
         progress_bar = st.progress(0, text="The AI teacher co-pilot is processing the request, please wait...")
        
 
