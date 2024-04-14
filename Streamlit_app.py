@@ -3,6 +3,7 @@ import google.generativeai as genai
 import streamlit as st
 import os
 import time
+import PIL.Image
 
 GOOGLE_API_KEY=st.secrets["GOOGLE_API_KEY"]
 genai.configure(api_key=GOOGLE_API_KEY)
@@ -60,16 +61,15 @@ def app():
     lessons, all while saving educators time and boosting their teaching potential."""
     st.write(text)
 
-    
-
-    options = ['K1', 'K2', 'Grade 1', 'Grade 2', 'Grade 3', 'Grade 4', 'Grade 5', 'Grade 6', 
-    'Grade 7', 'Grade 8', 'Grade 9', 'Grade 10', 'Grade 11', 'Grade 12']
+    options = ['Sample 1', 'Sample 2', 'Sample 3', 'Sample 4', 'Sample 5', 'Sample 6', 'Sample 7']
   
-    yearlevel = st.selectbox(
-    label="Select year level:",
+    yearlevel = st.sidebar.selectbox(
+    label="Select an essay sample to use:",
     options=options,
-    index=7  # Optionally set a default selected index
+    index=0  # Optionally set a default selected index
     )
+
+
 
     topic = st.text_input("Please input the topic: ")
 
