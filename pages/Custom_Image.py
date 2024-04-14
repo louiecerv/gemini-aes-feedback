@@ -54,7 +54,7 @@ def app():
     uploaded_file = st.sidebar.file_uploader("Choose an image", type=["jpg", "jpeg", "png"])
     if uploaded_file is not None:
         st.image(uploaded_file, caption="Uploaded Image", use_column_width=True)
-        image = Image.open(uploaded_file)
+        image = PIL.Image.open(uploaded_file)
         question = st.text_area("Enter the essay question:")
         scoring_rubric = st.text_area("Enter the scoring rubric:")
     
