@@ -80,6 +80,7 @@ def app():
 
     # Button to generate response
     if st.button("Score Essay"):
+        st.image(img, caption="Essay Response", use_column_width=True)
         progress_bar = st.progress(0, text="The AI teacher co-pilot is processing the request, please wait...")
        
 
