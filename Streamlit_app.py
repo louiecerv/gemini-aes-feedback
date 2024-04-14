@@ -76,7 +76,9 @@ def app():
     img = PIL.Image.open('./essays/' + filename)
 
     prompt = """You are a language teacher.  Score the essay response 
-    found in this image.  Provide feedback and suggestions for improvement."""
+    found in this image out of a perfect score of 100.  
+    Point out significant errors. 
+    Provide feedback and suggestions for improvement."""
 
     # Button to generate response
     if st.button("Score Essay"):
