@@ -14,13 +14,6 @@ generation_config = {
 }
 
 
-safety_settings = {
-    genai.generative_models.HarmCategory.HARM_CATEGORY_HATE_SPEECH: genai.generative_models.HarmBlockThreshold.BLOCK_MEDIUM_AND_ABOVE,
-    genai.generative_models.HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT: genai.generative_models.HarmBlockThreshold.BLOCK_MEDIUM_AND_ABOVE,
-    genai.generative_models.HarmCategory.HARM_CATEGORY_SEXUALLY_EXPLICIT: genai.generative_models.HarmBlockThreshold.BLOCK_MEDIUM_AND_ABOVE,
-    genai.generative_models.HarmCategory.HARM_CATEGORY_HARASSMENT: genai.generative_models.HarmBlockThreshold.BLOCK_MEDIUM_AND_ABOVE,
-}
-
 def app():
 
 
@@ -122,7 +115,6 @@ def app():
             # Generate response from Gemma
             bot_response = chat.send_message(question,
                 generation_config=generation_config,
-                safety_settings=safety_settings
             )
 
             # Access the content of the response text
