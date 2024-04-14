@@ -22,8 +22,8 @@ def app():
     Remember, your primary function is to empower teachers and enhance their effectiveness in the classroom."""
 
     model = genai.GenerativeModel(
-        #"gemini-1.0-pro-001",
-        "gemini-1.5-pro-preview-0409",
+        "gemini-1.0-pro",
+        #"gemini-1.5-pro-preview-0409",
         system_instruction = context,
     )
 
